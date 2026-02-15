@@ -1,0 +1,25 @@
+<header>
+    <div class="navbar bg-primary shadow-sn">
+        <div class="navbar-brand align-item-center d-flex">
+            <i style="font-size: 40px;" class="fa-solid fa-wand-magic-sparkles">&nbsp;</i>
+            <Strong style="font-size: 30px; font-style:normal;">Surabhi Hotels</Strong>
+            <div class="form-group">
+                <input type="text" style="border-radius: 10px;width: 450px;margin-left: 30px;" class="form-control"
+                    [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="Search books">
+            </div>
+            <span style="position: absolute;right: 46%;top: 20px;margin-left: 30px; color: blue;"
+                class="fa-solid fa-magnifying-glass"></span>
+
+        </div>
+        <button routerLink="/product" style="margin-left:30px;" class="btn btn-primary">
+            <i class="fas fa-home"></i> <br>Home
+        </button>
+        <button routerLink="/wishlist" style="margin-left: 70px;" class="btn btn-primary">
+            <i style="font-size: 20px;" class="fas fa-shopping-cart"></i> <br>
+            Cart
+            <div style="font-size: 10px;" class="badge bg-danger">
+                {{totalwishlist}}
+            </div>
+        </button>
+    </div>
+</header>

@@ -1,0 +1,89 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2 style="color: #fff;">Food Operations</h2>
+        <button routerLink="/adminpage" style="margin-left:30px;" class="btn btn-primary">
+            <i class="fas fa-home"></i> <br>Home
+        </button>
+        <button routerLink="/userop" style="margin-left: 70px;" class="btn btn-primary">
+            <br>
+           User CRUD            
+        </button>
+        <div class="d-flex">            
+            <button (click)="clickaddFood()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                class="btn btn-warning"><i class="fas fa-plus"></i><br>Add Food details</button>
+        </div>
+    </div>
+</nav>
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col" style="width: 25%;">Description</th>
+            <th scope="col">Type</th>
+            <th scope="col">cuisine_name</th>
+            <th scope="col">price</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of foodData">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.cuisine_name}}</td>
+            <td>{{item.price}}</td>
+            <td>
+                <button (click)="onEditing(item.id)" 
+                    class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                <button (click)="deleteFoodlist(item.id)" class="btn btn-danger mx-3"><i
+                        class="fas fa-trash-alt"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label class="form-label">Food Name</label>
+                        <input formControlName="name" type="text" [(ngModel)]="menuObject.name" class="form-control" id="exampleInputEmail1" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <input [(ngModel)]="menuObject.description" formControlName="description" type="text" class="form-control" id="exampleInputEmail1"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Type</label>
+                        <input [(ngModel)]="menuObject.type" formControlName="type" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Cuisine name</label>
+                        <input [(ngModel)]="menuObject.cuisine_name" formControlName="cuisine_name" type="text" class="form-control" id="exampleInputEmail1"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input [(ngModel)]="menuObject.price" formControlName="price" type="text" class="form-control" id="exampleInputEmail1"
+                            required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button *ngIf="addbutton" (click)="postAllfoods()" type="button" class="btn btn-primary">Add Food</button>
+                <button *ngIf="updatebutton"  type="button"class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

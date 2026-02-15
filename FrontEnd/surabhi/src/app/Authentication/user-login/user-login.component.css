@@ -1,0 +1,14 @@
+.card{    
+    border: none;
+    width: 500px;
+    padding: 40px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: hsla(9, 100%, 64%, 0.8);
+    background: linear-gradient(90deg,hsla(9, 100%, 64%, 0.8)0%,hsla(0, 100%, 50%, 1)100%);
+}
+.card h2{
+    color: white;
+}

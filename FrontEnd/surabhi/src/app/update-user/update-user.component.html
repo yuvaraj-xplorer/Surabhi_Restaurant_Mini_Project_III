@@ -1,0 +1,32 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update User </h3>
+    <form (ngSubmit) = "onSubmit()">
+    
+        <div class="form-group">
+            <label> User Name</label>
+            <input type="text" class ="form-control" id = "userName"
+                [(ngModel)] = "user.userName" name = "userName">
+        </div>
+    
+        <div class="form-group">
+            <label> password</label>
+            <input type="password" class ="form-control" id = "password"
+                [(ngModel)] = "user.password" name = "password">
+        </div>
+    
+        <div class="form-group">
+            <label> Email Id</label>
+            <input type="text" class ="form-control" id = "emailId"
+                [(ngModel)] = "user.userEmail" name = "emailId">
+        </div>
+        <div class="form-group">
+            <label> Mobile</label>
+            <input type="text" class ="form-control" id = "mobile"
+                [(ngModel)] = "user.mobile" name = "mobile">
+        </div>
+    
+        <button class = "btn btn-success mt-3" type ="submit">Submit</button>
+    
+    </form>
+    <button routerLink="/userop" class="btn btn-primary mt-3">Back</button>
+    </div> 

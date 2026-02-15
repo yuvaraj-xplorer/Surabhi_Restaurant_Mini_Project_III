@@ -1,0 +1,76 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2 style="color: #fff;">User Operations</h2>
+        <button routerLink="/adminpage" style="margin-left:30px;" class="btn btn-primary">
+          <i class="fas fa-home"></i> <br>Home
+      </button>
+      <button routerLink="/menuop" style="margin-left: 70px;" class="btn btn-primary">
+        <br>
+       Menu CRUD            
+    </button>
+        <div class="d-flex">          
+            <button (click)="clickadduser()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning"><i class="fas fa-user-plus"></i><br>Add user details</button>
+        </div>            
+    </div>
+</nav>
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email id</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Password</th>
+            <th>Operations</th>
+        </tr>        
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of users">
+            <td>{{item.id}}</td>
+            <td>{{item.userName}}</td>
+            <td>{{item.userEmail}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.password}}</td>
+            <td>
+                <button (click)="onEdit(item.id)" type="button"  class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                <button (click)="deleteUserlist(item.id)" class="btn btn-danger mx-3"><i class="fas fa-trash-alt"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">User details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input formControlName="userName" [(ngModel)] = "user.userName" type="text" class="form-control" id="exampleInputName" required>                       
+                  </div>
+                  
+                <div class="mb-3">
+                  <label class="form-label">Email address</label>
+                  <input formControlName="userEmail" [(ngModel)] = "user.userEmail" type="email" class="form-control" id="exampleInputEmail1" required>                       
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input formControlName="password" [(ngModel)] = "user.password" type="password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mobile number</label>
+                    <input formControlName="mobile" type="text" [(ngModel)] = "user.mobile"class="form-control" id="exampleInputMobile"required>                       
+                  </div>                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button id="cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button *ngIf="addbutton" (click)="postUserDetails()" type="button" class="btn btn-primary"><i class="fas fa-user-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
